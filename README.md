@@ -21,7 +21,7 @@ archinstall
 
 # Core apps
 ```sh
-sudo pacman -S iwd vi nano git less xdotool
+sudo pacman -S iwd vi nano git less xdotool nodejs npm
 ```
 
 
