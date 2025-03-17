@@ -8,13 +8,8 @@
 lsblk -o NAME,SIZE,MODEL
 dd if=/dev/urandom of=/dev/nvme0n1 bs=4M status=progress
 
-# Setup keyring
-pacman-key --init
-pacman-key --populate archlinux
-pacman -Syy
-
-# Install
-archinstall
+# Install (don't set any timezones etc)
+archinstall --skip-ntp
 ```
 
 
