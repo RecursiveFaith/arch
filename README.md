@@ -163,7 +163,23 @@ rofi -dump-config > ~/.config/rofi/config.rasi
 ```
 
 - Refresh fonts with `fc-cache -fv`
-- Add keyboard shortcut to `~/.config/i3/config` with `bindsym $mod+period rofimoji`
+
+
+# Rofi setup
+
+First add to `~/.config/i3/config`
+
+```
+# Comment out existing $mod+d, then add
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+period rofimoji
+```
+
+Then add a symlink from dmenu to rofi:
+```
+ln -s /usr/bin/rofi /usr/bin/dmenu
+```
+
 
 # Screenshot and screen recording
 
