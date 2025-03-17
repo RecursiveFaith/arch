@@ -1,127 +1,75 @@
-# Arch Setup Instructions
+# Arch Linux Setup Instructions
 
-This document consolidates all the steps for installing Arch Linux with your preferred configurations including i3, fonts, rofi, and more. Follow the steps in order.
-
----
-
-## 1. Arch Installer
-
-1. Use Ventoy to create a bootable USB.
-2. Boot from the USB and run the following commands:
+## 1. Initial Installation
 
 ```sh
-# Zero out the drive (replace "nvme0n1" with your actual drive as seen with lsblk)
+# Use Ventoy to create an install USB
+# After rebooting into the USB:
+
+# Zero drive; first get drive like "nvme0n1"
 lsblk -o NAME,SIZE,MODEL
 dd if=/dev/urandom of=/dev/nvme0n1 bs=4M status=progress
 
-# Start the Arch installer (DO NOT PICK A MIRROR to avoid potential time sync issues)
+# Install (DO NOT PICK A MIRROR or you could get time sync issues as of 250317)
 archinstall
 ```
 
----
-
 ## 2. Package Installation
 
-Install all required packages in one command:
-
 ```sh
-sudo pacman -S iwd vi nano git less xdotool nodejs npm flameshot brightnessctl redshift ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji xorg-xset
+# Install all packages at once
+sudo pacman -S iwd vi nano git less xdotool nodejs npm ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji flameshot brightnessctl redshift
 ```
 
----
-
-## 3. Configuration Files
-
-### 3.1. i3 Window Manager & i3status
-
-Save the following i3 configuration to `~/.config/i3/config`:
+## 3. Git Configuration
 
 ```sh
-# Swap ESC with CapsLock
-exec --no-startup-id setxkbmap -option caps:swapescape
-
-# Merge Xresources for DPI settings (Make sure ~/.Xresources is configured)
-exec --no-startup-id xrdb -merge ~/.Xresources
-
-# Rofi keybindings
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+period exec --no-startup-id rofimoji
-
-# Screenshot keybindings
-bindsym Print exec flameshot gui        # Full GUI interface on PrtScrn
-bindsym Shift+Print exec flameshot gui -s  # Direct region selection
-
-# Brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl s +10%
-bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
-
-# Redshift configuration (update latitude/longitude if needed)
-exec --no-startup-id redshift -l 45.523064:-122.676483 -t 6500:3000
-
-# Screen lock (DPMS timeout: 20 minutes => 1200 seconds)
-exec --no-startup-id xset dpms 0 0 1200
-
-# i3bar configuration with custom colors
-bar {
-  status_command i3status
-  colors {
-      background #050f0e
-      separator  #FF1342
-      focused_workspace  #FF1342 #FF1342 #ffffff
-      inactive_workspace #062621 #062621 #12FFBC
-      urgent_workspace   #ffc826 #ffc826 #050f0e
-  }
-}
-
-# Window border colors
-client.focused          #FF1342 #FF1342 #ffffff #FF1342 #FF1342
-client.unfocused        #050f0e #050f0e #3D996B   #FF1342 #050f0e
-client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
-client.urgent           #ffc826 #ffc826 #050f0e   #ffc826 #ffc826
-client.placeholder      #000000 #0c0c0c #ffffff   #000000 #0c0c0c
+git config --global init.defaultBranch main
 ```
 
-Next, set up i3status by creating or updating `~/.config/i3status/config`:
+## 4. System Configurations
+
+### Touchpad Configuration
 
 ```sh
-mkdir -p ~/.config/i3status
-cp /etc/i3status.conf ~/.config/i3status/config
+sudo nano /etc/X11/xorg.conf.d/30-touchpad.conf
 ```
 
-Then append or update the configuration with:
-
-```sh
-general {
-    colors = true
-    interval = 5
-    color_good = "#12FFBC"
-    color_degraded = "#ffc826"
-    color_bad = "#FF1342"
-    separator = " | "
-}
+Add this to the file:
+```
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "TapButton2" "2"  # Two-finger tap for right-click
+    Option "TapButton3" "3"  # Three-finger tap for middle-click
+EndSection
 ```
 
----
+### Display and Appearance Configuration
 
-### 3.2. Fonts and Xresources
-
-**Xresources** – create or update `~/.Xresources` with:
-
-```sh
+Create/edit `~/.Xresources`:
+```
 Xft.dpi: 192
 xterm*faceName: DejaVu Sans Mono:size=10
 xterm*background: #050f0e
 xterm*foreground: #ffffff
 ```
 
-Merge the changes:
-
+Apply the changes:
 ```sh
 xrdb -merge ~/.Xresources
 ```
 
-**Fonts** – create or update your font configuration at `~/.config/fontconfig/fonts.conf`:
+### Font Configuration
 
+Create the font configuration directory and file:
+```sh
+mkdir -p ~/.config/fontconfig
+```
+
+Edit `~/.config/fontconfig/fonts.conf`:
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -144,44 +92,109 @@ xrdb -merge ~/.Xresources
 ```
 
 Refresh fonts:
-
 ```sh
 fc-cache -fv
 ```
 
-**Rofi** – dump the default rofi configuration for customization:
+### i3 Configuration
+
+Create/edit `~/.config/i3/config` and add these entries:
+
+```
+# Key swap (add at top of file)
+exec --no-startup-id setxkbmap -option caps:swapescape
+
+# Rofi bindings
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+period rofimoji
+
+# Screenshot bindings
+bindsym Print exec flameshot gui  # Full GUI interface on PrtScrn
+bindsym Shift+Print exec flameshot gui -s  # Direct region selection
+
+# Brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+
+# Redshift for eye comfort
+exec --no-startup-id redshift -l 45.523064:-122.676483 -t 6500:3000
+
+# Screen timeout
+exec --no-startup-id xset dpms 0 0 1200
+
+# i3bar configuration
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command i3status
+
+  colors {
+      background #050f0e
+      separator #FF1342
+      focused_workspace #FF1342 #FF1342 #ffffff
+      inactive_workspace #062621 #062621 #12FFBC
+      urgent_workspace #ffc826 #ffc826 #050f0e
+  }
+}
+
+# Window Colors
+# Inspiration: https://marketplace.visualstudio.com/items?itemName=TheEdgesofBen.punk-runner
+
+                        # border, bg, text, indicator, child_border
+client.focused          #FF1342 #FF1342 #ffffff #FF1342 #FF1342
+client.unfocused        #050f0e #050f0e #3D996B #FF1342 #050f0e
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+client.urgent           #ffc826 #ffc826 #050f0e #ffc826 #ffc826
+client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+```
+
+### i3status Configuration
+
+```sh
+mkdir -p ~/.config/i3status
+cp /etc/i3status.conf ~/.config/i3status/config
+```
+
+Edit `~/.config/i3status/config` to add:
+```
+general {
+        colors = true
+        interval = 5
+        color_good = "#12FFBC"
+        color_degraded = "#ffc826"
+        color_bad = "#FF1342"
+        separator = " | "
+}
+```
+
+### Rofi Setup
 
 ```sh
 mkdir -p ~/.config/rofi
 rofi -dump-config > ~/.config/rofi/config.rasi
+
+# Create symlink from dmenu to rofi
+sudo ln -s /usr/bin/rofi /usr/bin/dmenu
 ```
 
----
-
-### 3.3. Touchpad Configuration
-
-Create a touchpad configuration file at `/etc/X11/xorg.conf.d/30-touchpad.conf` (using your preferred editor, e.g., sudo nano):
+### User Group Permissions
 
 ```sh
-Section "InputClass"
-    Identifier "touchpad"
-    Driver "libinput"
-    MatchIsTouchpad "on"
-    Option "Tapping" "on"
-    Option "TapButton2" "2"  # Two-finger tap for right-click
-    Option "TapButton3" "3"  # Three-finger tap for middle-click
-EndSection
+# Add user to video group for brightness control
+sudo usermod -aG video $USER
+sudo usermod -aG video sandbox
 ```
 
----
+## 5. Shell Configurations
 
-## 4. Additional Configurations
+### Bash Configuration
 
-### 4.1. Bash Configuration
-
-Add the following to your `~/.bashrc`:
-
+Edit `~/.bashrc`:
 ```sh
+#
+# ~/.bashrc
+#
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -201,48 +214,20 @@ alias chat="$HOME/github/oz/hey.sh/chat"
 alias sshadd="eval $(ssh-agent); ssh-add"
 ```
 
----
+### Nano Configuration
 
-### 4.2. Nano Configuration
-
-Create or update `~/.nanorc` to include markdown syntax highlighting:
-
-```sh
+Create/edit `~/.nanorc`:
+```
 include "/usr/share/nano/markdown.nanorc"
 ```
 
----
+## 6. Audio Configuration
 
-### 4.3. HDMI Audio Setup
-
-1. List sinks to find your HDMI device:
-
-   ```sh
-   pactl list sinks | grep Name
-   ```
-
-2. Set the HDMI sink as the default (replace `` with the correct identifier):
-
-   ```sh
-   pactl set-default-sink 
-   ```
-
----
-
-### 4.4. Permissions for Brightness Control
-
-Add your user (and any additional users such as "sandbox") to the video group:
-
+Check and set HDMI audio:
 ```sh
-sudo usermod -aG video $USER
-sudo usermod -aG video sandbox
+# List your sinks
+pactl list sinks
+
+# Set the default sink to HDMI
+pactl set-default-sink 
 ```
-
----
-
-## 5. Final Notes
-
-- After making changes to configuration files, restart i3 (for example, use the SHIFT+META+R keybinding) or log out/in.
-- Update coordinates in the redshift command if needed.
-- Always double-check drive names using `lsblk` before running any destructive commands.
-- Customize values (such as DPI, colors, and command options) to suit your preferences.
