@@ -21,7 +21,7 @@ archinstall
 
 # Core apps
 ```sh
-sudo pacman -S iwd vi nano git less
+sudo pacman -S iwd vi nano git less xdotool
 ```
 
 
@@ -130,7 +130,7 @@ general {
 
 
 # Fonts and Emojis
-- Install emojis `sudo pacman -S ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu noto-fonts-emoji`
+- Install emojis `sudo pacman -S ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu noto-fonts-emoji pango rofi rofimoji`
 - Edit `~/.config/fontconfig/fonts.conf`
 
 ```
@@ -155,9 +155,15 @@ general {
 xterm*faceSize: 10
 ```
 
+Then in `~/.config/rofi/config.rasi` add:
+
+```
+mkdir -p ~/.config/rofi
+rofi -dump-config > ~/.config/rofi/config.rasi
+```
+
 - Refresh fonts with `fc-cache -fv`
-- Install emoji picker `yay -S x11-emoji-picker`
-- Add keyboard shortcut to `~/.config/i3/config` with `bindsym $mod+period exec emoji-picker`
+- Add keyboard shortcut to `~/.config/i3/config` with `bindsym $mod+period rofimoji`
 
 # Screenshot and screen recording
 
