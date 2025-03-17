@@ -220,6 +220,9 @@ alias sshadd="eval $(ssh-agent); ssh-add"
 
 Create/edit `~/.nanorc`:
 ```
+set mouse
+set softwrap
+set atblanks
 include "/usr/share/nano/markdown.nanorc"
 ```
 
