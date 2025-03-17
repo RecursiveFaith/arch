@@ -49,6 +49,12 @@ EndSection
 ```
 
 
+# Swap ESC with CapsLock
+Add this to `~/.config/i3/conf`:
+```sh
+exec --no-startup-id setxkbmap -option caps:swapescape
+```
+
 
 # Fix resolution by lowering DPI
 
