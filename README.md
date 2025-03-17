@@ -228,3 +228,29 @@ alias sshadd="eval $(ssh-agent); ssh-add"
 ```
 include "/usr/share/nano/markdown.nanorc"
 ```
+
+
+
+# Brightness
+```
+sudo pacman -S brightnessctl
+sudo usermod -aG video $USER
+sudo usermod -aG video sandbox
+```
+
+Then add custom bindings to `~/.config/i3/conf`:
+```
+bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+```
+
+
+# Redshift
+```
+sudo pacman -S redshift
+```
+
+Then add to ~/.config/i3/conf`:
+```
+exec --no-startup-id redshift -l 45.523064:-122.676483 -t 6500:3000
+```
