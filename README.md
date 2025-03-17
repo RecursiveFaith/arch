@@ -148,6 +148,8 @@ client.urgent           #ffc826 #ffc826 #050f0e #ffc826 #ffc826
 client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 ```
 
+Then uncomment the dmenu binding: `# bindsym $mod+d exec --no-startup-id dmenu_ru`
+
 ### i3status Configuration
 
 ```sh
