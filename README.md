@@ -1,4 +1,8 @@
 # Arch Installer
+
+- Use Ventoy to create an install USB
+- After rebooting into the USB run the following
+
 ```sh
 # Zero drive; first get drive like "nvme0n1"
 lsblk -o NAME,SIZE,MODEL
@@ -50,18 +54,19 @@ EndSection
 
 ```sh
 # ~/.Xresources
-Xft.dpi: 220
+Xft.dpi: 192
 xterm*faceName: DejaVu Sans Mono:size=10
 xterm*background: #050f0e
 xterm*foreground: #ffffff
 ```
 
-The to merge the updates and refresh
+Then to merge the updates and refresh with SHIFT+META+R
 
 ```sh
 xrdb -merge ~/.Xresources
-# Then CTRL+WIN+R to refresh
 ```
+
+
 
 # i3 theme
 
@@ -83,6 +88,8 @@ bar {
 }
 
 # Window Colors
+# Inspiration: https://marketplace.visualstudio.com/items?itemName=TheEdgesofBen.punk-runner
+
                         # border, bg, text, indicator, child_border
 client.focused          #FF1342 #FF1342 #ffffff #FF1342 #FF1342
 client.unfocused        #050f0e #050f0e #3D996B #FF1342 #050f0e
@@ -91,7 +98,7 @@ client.urgent           #ffc826 #ffc826 #050f0e #ffc826 #ffc826
 client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 ```
 
-then create an `~/.config/i3status/config` config:
+then create `~/.config/i3status/config` with:
 
 ```sh
 mkdir -p ~/.config/i3status
@@ -110,10 +117,6 @@ general {
         separator = " | "
 }
 ```
-
-
-## Theme inspiration
-[](https://marketplace.visualstudio.com/items?itemName=TheEdgesofBen.punk-runner)
 
 
 
@@ -148,7 +151,8 @@ general {
       <family>Noto Color Emoji</family>
     </prefer>
   </alias>
-</fontconfig>
+</fontconfig>xterm*faceName: Liberation Mono
+xterm*faceSize: 10
 ```
 
 - Refresh fonts with `fc-cache -fv`
