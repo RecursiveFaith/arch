@@ -1,4 +1,9 @@
 #!/bin/bash
+# ---
+# USAGE:
+# ./copyconfigs.sh $username
+# ---
+# This file copies Arch/i3 configuration files from this current user to the passed user
 
 # Check if username is provided
 if [ -z "$1" ]; then
