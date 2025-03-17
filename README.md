@@ -250,7 +250,16 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 sudo pacman -S redshift
 ```
 
-Then add to ~/.config/i3/conf`:
+Then add to ~/.config/i3/conf:
 ```
 exec --no-startup-id redshift -l 45.523064:-122.676483 -t 6500:3000
+```
+
+
+# Screen lock
+
+Add this to ~/.config/i3/conf
+```
+# Set DPMS timeout to turn off the screen after 20 minutes (1200 seconds)
+exec --no-startup-id xset dpms 0 0 1200
 ```
