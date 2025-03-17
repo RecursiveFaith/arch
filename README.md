@@ -8,8 +8,8 @@
 lsblk -o NAME,SIZE,MODEL
 dd if=/dev/urandom of=/dev/nvme0n1 bs=4M status=progress
 
-# Install (don't set any timezones etc)
-archinstall --skip-ntp
+# Install (DO NOT PICK A MIRROR or you could get time sync issues as of 250317)
+archinstall
 ```
 
 
