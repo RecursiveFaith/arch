@@ -18,7 +18,7 @@ archinstall
 
 ```sh
 # Install all packages at once
-sudo pacman -S iwd vi nano git less xdotool nodejs npm ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji flameshot brightnessctl redshift
+sudo pacman -S iwd vi nano git less xdotool nodejs npm ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji flameshot brightnessctl redshift jq
 ```
 
 ## 3. Git Configuration
