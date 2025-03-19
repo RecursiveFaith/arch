@@ -10,7 +10,7 @@
 # - swaps CAPSLOCK with ESC
 
 # Install all packages at once
-sudo pacman -S iwd vi nano git less xdotool nodejs npm ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji flameshot brightnessctl redshift
+sudo pacman -S --needed iwd vi nano git less xdotool nodejs npm ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji flameshot brightnessctl redshift jq unzip tmux
 
 # Configure git
 git config --global init.defaultBranch main
