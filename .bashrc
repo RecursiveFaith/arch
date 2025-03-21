@@ -16,7 +16,6 @@ export DIARY_HISTORY="$HOME/gnostic/history.md"
 export HEY_BASE="$HOME/gnostic/projects/hey"
 export HEY_GIT="$HOME/gnostic/projects/bot/git.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
-export API_OPENROUTER='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'
 alias save="$HOME/gnostic/projects/hey/bot/git.sh"
 alias hey="$HOME/gnostic/projects/hey/chat.sh"
 export chat="$HOME/gnostic/projects/hey/chat.sh"
