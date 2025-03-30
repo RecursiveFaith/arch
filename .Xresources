@@ -1,7 +1,7 @@
 Xft.dpi: 192
 
 xterm*faceName: Liberation Mono
-xterm*faceSize: 10
+xterm*faceSize: 8
 
 xterm*background: #050f0e
 xterm*foreground: #ffffff

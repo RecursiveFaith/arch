@@ -10,17 +10,12 @@
 # - swaps CAPSLOCK with ESC
 
 # Install all packages at once
-sudo pacman -S --needed iwd vi nano git less xdotool nodejs npm ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji flameshot brightnessctl redshift jq unzip tmux xsel nodejs npm
+sudo pacman -S --needed iwd vi nano git less xdotool nodejs npm ttf-liberation noto-fonts noto-fonts-emoji ttf-dejavu pango rofi rofimoji flameshot brightnessctl redshift jq unzip tmux xsel nodejs npm make gawk tree
 
 # Configure git
 git config --global init.defaultBranch main
-
-# Swap CAPSLOCK with ESC
-touch /etc/udev/rules.d/99-keyboard-remap.rules
-chmod +x /etc/udev/rules.d/99-keyboard-remap.rules
-sudo tee /etc/udev/rules.d/99-keyboard-remap.rules << 'EOF'
-ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="*[Kk]eyboard*", RUN+="/bin/sh -c 'sleep 1; DISPLAY=:0 setxkbmap -option caps:swapescape'", TAG+="uaccess"
-EOF
+git config --global pull.rebase false
+git config --global submodule.recurse true
 
 # Touchpad
 sudo touch /etc/X11/xorg.conf.d/30-touchpad.conf
@@ -39,9 +34,27 @@ EOF
 cp .Xresources ~
 xrdb -merge ~/.Xresources
 
+# Install blesh
+if [ ! -d ~/.local/share/blesh ]; then
+  git clone --recursive --depth 1 https://github.com/akinomyoga/ble.sh.git
+  make -C ble.sh install PREFIX=~/.local
+  rm -rf ble.sh 
+fi
+
 # Configs, fonts, emojis
-cp -r .config ~
+source ~/.bashrc
+./copyconfigs.sh $USER
 fc-cache -fv
 
 # Permissions
 sudo usermod -aG video $USER
+
+# Ollama
+if ! command -v ollama >/dev/null; then
+  curl -fsSL https://ollama.com/install.sh | sh
+  ollama pull deepseek-r1:1.5b
+  ollama pull granite3.2-vision
+  ollama pull granite3.2:2b
+  ollama pull gemma3:4b
+  ollama pull phi4-mini
+fi

@@ -24,17 +24,21 @@ fi
 sudo mkdir -p $HOME_DIR/.config
 
 # Copy .config directory
-sudo cp -r ~/.config $HOME_DIR/
+sudo cp -r .config $HOME_DIR/
+sudo cp -r .vim $HOME_DIR/
 
 # Copy additional configuration files
-sudo cp ~/.bashrc $HOME_DIR/
-sudo cp ~/.nanorc $HOME_DIR/
-sudo cp ~/.Xresources $HOME_DIR/
+sudo cp .bashrc $HOME_DIR/
+sudo cp .nanorc $HOME_DIR/
+sudo cp .vimrc $HOME_DIR/
+sudo cp .tmux.conf $HOME_DIR/
+sudo cp .Xresources $HOME_DIR/
 
 # Fix ownership
 sudo chown -R $USERNAME:$USERNAME $HOME_DIR/.config
 sudo chown $USERNAME:$USERNAME $HOME_DIR/.bashrc
 sudo chown $USERNAME:$USERNAME $HOME_DIR/.nanorc
+sudo chown $USERNAME:$USERNAME $HOME_DIR/.vimrc
 sudo chown $USERNAME:$USERNAME $HOME_DIR/.Xresources
 
 # Ensure .xinitrc exists and is executable

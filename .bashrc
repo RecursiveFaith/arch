@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Blesh
+[[ -s ~/.local/share/blesh/ble.sh ]] && source ~/.local/share/blesh/ble.sh
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
@@ -12,14 +15,14 @@ PS1='[\u@\h \W]\$ '
 alias vi='vim'
 alias cb='xsel -ib'
 
-export DIARY_HISTORY="$HOME/gnostic/history.md"
-export HEY_BASE="$HOME/gnostic/projects/hey"
-export HEY_GIT="$HOME/gnostic/projects/bot/git.sh"
+export DIARY_HISTORY="$HOME/oz/history.md"
+export HEY_BASE="$HOME/oz/projects/hey"
+export HEY_GIT="$HOME/oz/projects/bot/git.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
-alias save="$HOME/gnostic/projects/hey/bot/git.sh"
-alias hey="$HOME/gnostic/projects/hey/chat.sh"
-export chat="$HOME/gnostic/projects/hey/chat.sh"
-alias sshadd="eval $(ssh-agent); ssh-add"
+alias save="$HOME/oz/projects/hey/bot/git.sh"
+alias hey="$HOME/oz/projects/hey/chat.sh"
+export chat="$HOME/oz/projects/hey/chat.sh"
+export sshadd="eval $(ssh-agent) & ssh-add"
 
 # Foreground colors
 export BLACK='\033[30m'

@@ -25,6 +25,7 @@ Run `./setup.sh` to run the post install scripts, which include:
   - Emoji picker
   - Brightness and blue light filters
   - Coding tools
+- Adds ble.sh with autocomplete and syntax highlighting for Bash
 
 ## API keys
 To setup your API keys, run the following:
@@ -33,8 +34,10 @@ To setup your API keys, run the following:
 # OPENROUTER.ai
 sudo touch /etc/profile.d/openrouter.sh
 sudo chmod 644 /etc/profile.d/openrouter.sh
-echo 'API_OPENROUTER="your_api_key"' | sudo tee /etc/profile.d/openrouter.sh > /dev/null 
+echo 'export API_OPENROUTER="your_api_key"' | sudo tee /etc/profile.d/openrouter.sh > /dev/null 
 ```
+
+Then restart your machine to apply API keys globally to all users
 
 ## Audio Configuration
 
