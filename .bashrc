@@ -21,6 +21,7 @@ export HEY_GIT="$HOME/oz/projects/bot/git.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
 alias save="$HOME/oz/projects/hey/bot/git.sh"
 alias hey="$HOME/oz/projects/hey/chat.sh"
+alias contextualize="$HOME/oz/projects/hey/contextualize.sh"
 export chat="$HOME/oz/projects/hey/chat.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
