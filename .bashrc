@@ -25,15 +25,19 @@ export sshadd="eval $(ssh-agent) & ssh-add"
 context() {
   "$HOME/oz/projects/hey/contextualize.sh" "$@"
 }
+export -f context
 hey() {
   "$HOME/oz/projects/hey/chat.sh" "$@"
 }
+export -f hey
 diary() {
   "$HOME/oz/projects/hey/bot/diary.sh" "$@"
 }
+export -f diary
 save() {
   "$HOME/oz/projects/hey/bot/git.sh" "$@"
 }
+export -f save
 
 # Foreground colors
 export BLACK='\033[30m'
