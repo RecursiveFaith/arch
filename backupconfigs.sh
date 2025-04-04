@@ -9,6 +9,7 @@ rm .vim/.netrwhist
 
 # Copy additional configuration files
 cp ~/.bashrc .
+cp ~/.bash_profile .
 cp ~/.nanorc .
 cp ~/.vimrc .
 cp ~/.tmux.conf .
