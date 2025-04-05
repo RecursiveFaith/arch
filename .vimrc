@@ -17,6 +17,9 @@ set wrap        " Enable line wrapping
 set linebreak   " Break lines at word boundaries
 set nolist      " Turn off 'list' mode as it conflicts with linebreak
 
+" Formatting
+set relativenumber 
+
 " Tabs
 autocmd FileType * setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
