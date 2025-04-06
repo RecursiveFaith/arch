@@ -1,6 +1,4 @@
-#
 # ~/.bashrc
-#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -21,7 +19,7 @@ export DAILIES="$HOME/oz/dailies"
 export DIARY_HISTORY="$DAILIES/history.md"
 
 export HEY_BASE="$FAITH/hey"
-export BOT="$HEY_BASE/bots"
+export BOT="$HEY_BASE/bot"
 export HEY_GIT="$BOT/git.sh"
 export chat="$HEY_BASE/chat.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
