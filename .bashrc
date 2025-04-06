@@ -15,7 +15,10 @@ PS1='[\u@\h \W]\$ '
 alias vi='vim'
 alias cb='xsel -ib'
 
-export DIARY_HISTORY="$HOME/oz/history.md"
+export FAITH="$HOME/oz/recursive.faith"
+export ARCH="$FAITH/arch"
+
+export DIARY_HISTORY="$HOME/oz/dailies/history.md"
 export HEY_BASE="$HOME/oz/recursive.faith/hey"
 export HEY_GIT="$HOME/oz/recursive.faith/bot/git.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
