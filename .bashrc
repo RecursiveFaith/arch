@@ -18,38 +18,47 @@ alias cb='xsel -ib'
 export FAITH="$HOME/oz/recursive.faith"
 export ARCH="$FAITH/arch"
 export DAILIES="$HOME/oz/dailies"
-
 export DIARY_HISTORY="$DAILIES/history.md"
+
 export HEY_BASE="$FAITH/hey"
-export HEY_GIT="$HEY_BASE/bot/git.sh"
+export BOT="$HEY_BASE/bots"
+export HEY_GIT="$BOT/git.sh"
 export chat="$HEY_BASE/chat.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
+
 export sshadd="eval $(ssh-agent) & ssh-add"
 
-context() {
-  "$HOME/oz/recursive.faith/hey/contextualize.sh" "$@"
+# Git related
+gs(){
+  "git" "status" "$@"
 }
-export -f context
+export -f gs
+
+# Hey commands
 hey() {
-  "$HOME/oz/recursive.faith/hey/chat.sh" "$@"
+  "$HEY_BASE/chat.sh" "$@"
 }
 export -f hey
+context() {
+  "$HEY_BASE/contextualize.sh" "$@"
+}
+export -f context
 diary() {
-  "$HOME/oz/recursive.faith/hey/bot/diary.sh" "$@"
+  "$BOT/diary.sh" "$@"
 }
 export -f diary
 save() {
-  "$HOME/oz/recursive.faith/hey/bot/git.sh" "$@"
+  "$BOT/git.sh" "$@"
 }
 export -f save
 copyconfigs() {
-  "$HOME/oz/recursive.faith/arch/copyconfigs.sh" "$@"
+  "$ARCH/copyconfigs.sh" "$@"
 }
-export -f save
+export -f copyconfigs 
 backupconfigs() {
-  "$HOME/oz/recursive.faith/arch/backupconfigs.sh" "$@"
+  "$ARCH/backupconfigs.sh" "$@"
 }
-export -f save
+export -f backupconfigs
 
 # Foreground colors
 export BLACK='\033[30m'
