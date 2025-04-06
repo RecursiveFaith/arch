@@ -26,7 +26,7 @@ tiling_drag modifier titlebar
 
 # Basic window management keybindings
 bindsym $mod+Return exec i3-sensible-terminal # Start terminal
-bindsym $mod+Shift+q kill # Kill focused window
+bindsym $mod+Shift+q kill
 
 # Application launcher (Rofi)
 bindsym $mod+d exec --no-startup-id rofi -show drun
@@ -57,16 +57,16 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Layout control
-bindsym $mod+b split h # Split horizontal (Changed from 'h' to avoid conflict)
-bindsym $mod+v split v # Split vertical
-bindsym $mod+f fullscreen toggle # Toggle fullscreen
-bindsym $mod+s layout stacking # Stacking layout
-bindsym $mod+w layout tabbed # Tabbed layout
-bindsym $mod+e layout toggle split # Toggle split layout
+bindsym $mod+b split h 
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle 
+bindsym $mod+s layout stacking 
+bindsym $mod+w layout tabbed 
+bindsym $mod+e layout toggle split 
 
 # Tiling/Floating control
-bindsym $mod+Shift+space floating toggle # Toggle floating
-bindsym $mod+space focus mode_toggle # Toggle focus mode
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle 
 
 # Focus parent/child
 bindsym $mod+a focus parent
@@ -109,9 +109,9 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # i3 control
-bindsym $mod+Shift+c reload # Reload config
-bindsym $mod+Shift+r restart # Restart i3 inplace
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'" # Exit i3
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Resize mode
 mode "resize" {
@@ -132,7 +132,7 @@ mode "resize" {
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "resize" # Enter resize mode
+bindsym $mod+r mode "resize"
 
 # i3bar configuration
 bar {
@@ -161,8 +161,8 @@ bindsym Shift+Print exec flameshot gui -s
 # Brightness control keybindings
 bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
-exec --no-startup-id redshift -l 45.523064:-122.676483 -t 6500:3000 # Redshift for color temperature
+exec --no-startup-id redshift -l 45.523064:-122.676483 -t 6500:3000
 
 # Other custom settings
-exec_always --no-startup-id setxkbmap -option caps:swapescape # Swap Caps Lock and Escape
+exec_always --no-startup-id setxkbmap -option caps:swapescape 
 
