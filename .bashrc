@@ -22,7 +22,7 @@ export HEY_BASE="$FAITH/hey"
 export BOT="$HEY_BASE/bot"
 export HEY_GIT="$BOT/git.sh"
 export chat="$HEY_BASE/chat.sh"
-export HEY_MODEL='meta-llama/llama-4-scout:free'
+export HEY_MODEL='google/gemini-2.5-pro-exp-03-25:free'
 
 export sshadd="eval $(ssh-agent) & ssh-add"
 
