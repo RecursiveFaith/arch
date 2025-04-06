@@ -17,12 +17,13 @@ alias cb='xsel -ib'
 
 export FAITH="$HOME/oz/recursive.faith"
 export ARCH="$FAITH/arch"
+export DAILIES="$HOME/oz/dailies"
 
-export DIARY_HISTORY="$HOME/oz/dailies/history.md"
-export HEY_BASE="$HOME/oz/recursive.faith/hey"
-export HEY_GIT="$HOME/oz/recursive.faith/bot/git.sh"
+export DIARY_HISTORY="$DAILIES/history.md"
+export HEY_BASE="$FAITH/hey"
+export HEY_GIT="$HEY_BASE/bot/git.sh"
+export chat="$HEY_BASE/chat.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
-export chat="$HOME/oz/recursive.faith/hey/chat.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
 context() {
