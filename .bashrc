@@ -31,6 +31,10 @@ gs(){
   "git" "status" "$@"
 }
 export -f gs
+gd(){
+  "git" "diff" "$@"
+}
+export -f gs
 
 # Hey commands
 hey() {

@@ -34,6 +34,10 @@ inoremap <leader>t <C-R>=strftime("%H%M")<CR>
 " Insert horizontal rule with leader+hr
 nnoremap <leader>hr o<CR><CR><CR><Esc>40i=<Esc>o<CR><CR><CR><Esc>
 
+" MARKDOWN
+imap ,[ [ ] 
+
+" @TODO move to a seperate file
 " Yank into system clipboard in visual mode
 vnoremap y y:call system('xsel -ib', @0)<CR>:redraw!<CR>
 " Yank current line
