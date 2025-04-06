@@ -28,7 +28,6 @@ Run `./setup.sh` to run the post install scripts, which include:
 - Adds ble.sh with autocomplete and syntax highlighting for Bash
 - i3 improvements
   - vim navigation bindings
-  - integration with tmux
 
 ## API keys
 To setup your API keys, run the following:
