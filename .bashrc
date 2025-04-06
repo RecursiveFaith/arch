@@ -16,7 +16,7 @@ alias cb='xsel -ib'
 export FAITH="$HOME/oz/recursive.faith"
 export ARCH="$FAITH/arch"
 export DAILIES="$HOME/oz/dailies"
-export DIARY_HISTORY="$DAILIES/history.md"
+export HISTORY="$DAILIES/historymd"
 
 export HEY_BASE="$FAITH/hey"
 export BOT="$HEY_BASE/bot"
