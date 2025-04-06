@@ -13,10 +13,12 @@ PS1='[\u@\h \W]\$ '
 alias vi='vim'
 alias cb='xsel -ib'
 
-export FAITH="$HOME/oz/recursive.faith"
+export ME="$HOME/oz"
+export FAITH="$ME/recursive.faith"
 export ARCH="$FAITH/arch"
-export DAILIES="$HOME/oz/dailies"
+export DAILIES="$ME/dailies"
 export HISTORY="$DAILIES/history.md"
+export CONTEXT="$ME/context"
 
 export HEY_BASE="$FAITH/hey"
 export BOT="$HEY_BASE/bot"
@@ -53,14 +55,6 @@ save() {
   "$BOT/git.sh" "$@"
 }
 export -f save
-copyconfigs() {
-  "$ARCH/copyconfigs.sh" "$@"
-}
-export -f copyconfigs 
-backupconfigs() {
-  "$ARCH/backupconfigs.sh" "$@"
-}
-export -f backupconfigs
 
 # Foreground colors
 export BLACK='\033[30m'
