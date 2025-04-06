@@ -26,6 +26,9 @@ Run `./setup.sh` to run the post install scripts, which include:
   - Brightness and blue light filters
   - Coding tools
 - Adds ble.sh with autocomplete and syntax highlighting for Bash
+- i3 improvements
+  - vim navigation bindings
+  - integration with tmux
 
 ## API keys
 To setup your API keys, run the following:
@@ -39,8 +42,7 @@ echo 'export API_OPENROUTER="your_api_key"' | sudo tee /etc/profile.d/openrouter
 
 Then restart your machine to apply API keys globally to all users
 
-## Audio Configuration
-
+## HDMI/External Audio Configuration
 To configure external audio, try the following:
 
 ```sh
