@@ -16,34 +16,34 @@ alias vi='vim'
 alias cb='xsel -ib'
 
 export DIARY_HISTORY="$HOME/oz/history.md"
-export HEY_BASE="$HOME/oz/projects/recursivefaith/hey"
-export HEY_GIT="$HOME/oz/projects/recursivefaith/bot/git.sh"
+export HEY_BASE="$HOME/oz/recursive.faith/hey"
+export HEY_GIT="$HOME/oz/recursive.faith/bot/git.sh"
 export HEY_MODEL='google/gemini-2.0-flash-001'
-export chat="$HOME/oz/projects/recursivefaith/hey/chat.sh"
+export chat="$HOME/oz/recursive.faith/hey/chat.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
 context() {
-  "$HOME/oz/projects/recursivefaith/hey/contextualize.sh" "$@"
+  "$HOME/oz/recursive.faith/hey/contextualize.sh" "$@"
 }
 export -f context
 hey() {
-  "$HOME/oz/projects/recursivefaith/hey/chat.sh" "$@"
+  "$HOME/oz/recursive.faith/hey/chat.sh" "$@"
 }
 export -f hey
 diary() {
-  "$HOME/oz/projects/recursivefaith/hey/bot/diary.sh" "$@"
+  "$HOME/oz/recursive.faith/hey/bot/diary.sh" "$@"
 }
 export -f diary
 save() {
-  "$HOME/oz/projects/recursivefaith/hey/bot/git.sh" "$@"
+  "$HOME/oz/recursive.faith/hey/bot/git.sh" "$@"
 }
 export -f save
 copyconfigs() {
-  "$HOME/oz/projects/recursivefaith/arch/copyconfigs.sh" "$@"
+  "$HOME/oz/recursive.faith/arch/copyconfigs.sh" "$@"
 }
 export -f save
 backupconfigs() {
-  "$HOME/oz/projects/recursivefaith/arch/backupconfigs.sh" "$@"
+  "$HOME/oz/recursive.faith/arch/backupconfigs.sh" "$@"
 }
 export -f save
 
